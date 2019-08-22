@@ -19,6 +19,8 @@ if __name__ == '__main__':
     soup = crawler.process_html(html)
     results = crawler.get_results(soup=soup)
     df = crawler.generate_df(results)
-    df.to_csv('olx-' + str(datetime.now()) + '.csv')
-    print(f'Dataframe salvo em {getcwd()} como olx-{str(datetime.now())}.csv')
-    print(df)
+    
+    now = datetime.now()
+    name = f'olx-{search.replace("+", "-")}-{now.year}-{now.hour}-{now.minute}-{now.second}'
+    df.to_csv('olx-' + name + '.csv')
+    print(f'Dataframe salvo em {getcwd()} como {name}.csv')
